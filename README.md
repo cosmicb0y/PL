@@ -25,3 +25,17 @@ IntelliJ에 ANTLR V4 gammar plugin 설치 : [유튜브](https://www.youtube.com/
 
 ![img](img/hello.png)
 ![img2](img/hello2.png)
+
+## Excercise I
+Write a grammar that can evaluate 4 basic math operations (+, -, *, /)
+```g4
+grammar Exercise;
+prog: (expr NEWLINE)*;
+expr: term (('+'|'-') term)*;
+term: factor (('*'|'/') factor)*;
+factor: '('expr')' | INT;
+NEWLINE : [\r\n]+;
+INT : [0-9]+;
+```
+![exercise1](img/exercise1.png)
+

@@ -1,0 +1,10 @@
+grammar Homework1;
+prog: (def NEWLINE)*(assign NEWLINE)*;
+def: 'var ' ID (', ' ID)* ': ' ('integer' | 'real') ';';
+assign: ID ' := ' expr ';';
+expr: term (('+'|'-') term)* ;
+term: factor (('*'|'/') factor)*;
+factor: '('expr')' | NUM | ID;
+NEWLINE : [\r\n]+;
+ID: ([A-Z]|[a-z]|'_')+;
+NUM : [0-9]+('.'[0-9]+)?;

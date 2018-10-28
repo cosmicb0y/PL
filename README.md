@@ -39,3 +39,39 @@ INT : [0-9]+;
 ```
 ![exercise1](img/exercise1.png)
 
+## Homework I
+Write a grammar for a calculator language
+
+```
+var a, b: integer;
+var x: real;
+
+a := 10.002;
+b := 2+(4-1)*2;
+x := a+b;
+```
+
+- The language will have a set of statements including
+declarations, assignments, and expressions.
+    - Declarations must come before other statements like C/C++.
+    - Each statement must end with a semi-colon.
+    - The four basic arithmetical operations (+, -, *, and /) consisting of variables and numbers have to be provided
+- Only positive integer and real numbers (no signed
+numbers); no scientific notation (e.g., 6E+5)
+
+```g4
+grammar Homework1;
+prog: (def NEWLINE)*(assign NEWLINE)*;
+def: 'var ' ID (', ' ID)* ': ' ('integer' | 'real') ';';
+assign: ID ' := ' expr ';';
+expr: term (('+'|'-') term)* ;
+term: factor (('*'|'/') factor)*;
+factor: '('expr')' | NUM | ID;
+NEWLINE : [\r\n]+;
+ID: ([A-Z]|[a-z]|'_')+;
+NUM : [0-9]+('.'[0-9]+)?;
+```
+
+![hw1](img/hw1.png)
+![hw2](img/hw2.png)
+![hw3](img/hw3.png)
